@@ -1,55 +1,38 @@
-import React, {useEffect, useState} from 'react';
-import Style from './BaseLayout.module.scss'
-import Navbar from "./Navbar";
-import Home from "./home/Home";
-import About from "./about/About";
-import Portfolio from "./portfolio/Portfolio";
-import {Route, Routes} from "react-router-dom";
-import {Box, Grid} from "@mui/material";
+import {Route, useLocation, Routes} from "react-router-dom"
+import { AnimatePresence, motion } from "framer-motion"
+
+import Work from "../pages/Work"
+import Home from '../pages/Home'
+import About from '../pages/About'
+import Testimonials from '../pages/Testimonials'
+import Contact from '../pages/Contact'
+import Services from '../pages/Services'
+
+import Navbar from "./Navbar"
+import Header from "./Header"
+import Transition from "./Transition"
 
 export default function BaseLayout() {
-   let [darkMode, setDarkMode] = useState(false);
-
-   function handleToggleDarkMode() {
-      let oppositeOfCurrentDarkMode = !darkMode
-      console.log(oppositeOfCurrentDarkMode)
-      localStorage.setItem('darkMode', `${oppositeOfCurrentDarkMode}`)
-      setDarkMode(oppositeOfCurrentDarkMode)
-   }
-
-   useEffect(() => {
-      let detectedDarkMode = eval(localStorage.getItem('darkMode'));
-
-      if (detectedDarkMode) {
-         setDarkMode(detectedDarkMode)
-      } else {
-         localStorage.setItem('darkMode', 'false')
-      }
-   }, [])
-
+   const location = useLocation()
+   
    return (
-      <Box className={darkMode ? Style.dark : Style.light}>
-         <Grid container display={'flex'} flexDirection={'column'} minHeight={'100vh'}
-               justifyContent={'space-between'}>
-            <Grid item>
-               <Navbar darkMode={darkMode} handleClick={handleToggleDarkMode}/>
-            </Grid>
-            <Grid item flexGrow={1}>
-               <Routes>
+      <div className={`page bg-site text-white bg-cover bg-no-repeat relative`}>
+         <Header />
+         <Navbar/>
+         <AnimatePresence mode="wait">
+            <motion.div key={location.pathname} className="h-full">
+               <Transition />
+               <Routes location={location} key={location.pathname}>
                   <Route exact path={'/'} element={<Home/>}/>
                   <Route exact path={'/about'} element={<About/>}/>
-                  <Route exact path={'/portfolio'} element={<Portfolio/>}/>
+                  <Route exact path={'/services'} element={<Services/>}/>
+                  <Route exact path={'/work'} element={<Work/>}/>
+                  <Route exact path={'/testimonials'} element={<Testimonials/>}/>
+                  <Route exact path={'/contact'} element={<Contact/>}/>
                </Routes>
-            </Grid>
-            <Grid item>
-               <Box component={'footer'} display={'flex'} flexDirection={'column'} alignItems={'center'}
-                    py={'1.5rem'} sx={{opacity: 0.7}} width={'100%'}>
-                  <p>template created with &hearts; by <a href={'https://paytonpierce.dev'}>Payton Pierce</a></p>
-                  <p>&copy; 2023</p>
-               </Box>
-            </Grid>
-         </Grid>
-      </Box>
+            </motion.div>
+         </AnimatePresence>
+      </div>
    )
 }
 
