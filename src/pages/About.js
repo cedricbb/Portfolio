@@ -11,7 +11,7 @@ import Circles from "../components/Circles"
 const About = () => {
   const [index, setIndex] = useState(0)
   return (
-    <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
+    <div className="h-full bg-primary/30 py-32 text-center xl:text-left overflow-auto">
       <Circles />
       <motion.div
         variants={fadeIn('right', 0.2)}
