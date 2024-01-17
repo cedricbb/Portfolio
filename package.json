@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "dependencies": {
+    "@tsparticles/react": "^3.0.0",
     "framer-motion": "^10.18.0",
     "react": "^18.2.0",
     "react-countup": "^6.5.0",
@@ -12,7 +13,8 @@
     "react-scripts": "^5.0.1",
     "swiper": "^11.0.5",
     "swiper-react": "^1.0.0",
-    "tailwind-scrollbar": "^3.0.5"
+    "tailwind-scrollbar": "^3.0.5",
+    "tsparticles": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

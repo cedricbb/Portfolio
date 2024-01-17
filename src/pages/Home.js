@@ -1,9 +1,9 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { fadeIn } from '../variants'
+
 import ProjectsBtn from '../components/ProjectsBtn'
 import Avatar from '../components/Avatar'
-// import ParticlesContainer from './ParticlesContainer'
+import ParticlesContainer from '../components/ParticlesContainer'
 
 const Home = () => {
   return (
@@ -46,7 +46,7 @@ const Home = () => {
         <div className="w-[1200px] h-full absolute right-0 bottom-0">
         <div className="bg-none xl:bg-explosion xl:bg-cover xl:bg-left xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0"></div>
         <div>
-          {/* <ParticlesContainer /> */}
+          <ParticlesContainer />
         </div>
         <motion.div
           variants={fadeIn('up', 0.5)} 

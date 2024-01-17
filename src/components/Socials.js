@@ -8,7 +8,7 @@ const Socials = () => {
       <Link to='' className="hover:text-accent transition-all duration-300 text-white">
         <RiLinkedinLine />
       </Link>
-      <Link to='' className="hover:text-accent transition-all duration-300 text-white">
+      <Link to='https://github.com/cedricbb' className="hover:text-accent transition-all duration-300 text-white" target="_blank" rel="noreferrer">
         <RiGithubLine />
       </Link>
     </div>
